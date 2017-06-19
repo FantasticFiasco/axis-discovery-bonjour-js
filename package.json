@@ -44,8 +44,7 @@
     "prepack": "npm run test && npm run lint",
     "pack": "npm pack"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/chai": "4.0.0",
     "@types/mocha": "2.2.41",
