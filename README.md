@@ -1,1 +1,1 @@
-# axis-discovery-ssdp
+# axis-discovery-bounjour
