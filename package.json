@@ -1,7 +1,7 @@
 {
   "name": "axis-discovery-bonjour",
-  "version": "1.0.2",
-  "description": "A node.js Bonjour client library written in TypeScript capable of searching for Axis Communication cameras.",
+  "version": "0.0.1",
+  "description": "A Node.js Bonjour client library written in TypeScript capable of searching for Axis Communication cameras.",
   "keywords": [
     "axis",
     "communications",
