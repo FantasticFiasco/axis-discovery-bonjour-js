@@ -6,3 +6,9 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/FantasticFiasco/axis-discovery-bonjour.svg)](https://greenkeeper.io/)
 [![dependencies Status](https://david-dm.org/FantasticFiasco/axis-discovery-bonjour/status.svg)](https://david-dm.org/FantasticFiasco/axis-discovery-bonjour)
 [![devDependencies Status](https://david-dm.org/FantasticFiasco/axis-discovery-bonjour/dev-status.svg)](https://david-dm.org/FantasticFiasco/axis-discovery-bonjour?type=dev)
+
+## Credit
+
+Thank you [JetBrains](https://www.jetbrains.com/) for your important initiative to support the open source community with free licenses to your products.
+
+![JetBrains](./doc/resources/jetbrains.png)
