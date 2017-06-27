@@ -43,8 +43,12 @@
     "coverage:publish": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "prepack": "yarn run test && yarn run lint"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@fantasticfiasco/expect": "1.0.0",
+    "bonjour": "3.5.0"
+  },
   "devDependencies": {
+    "@types/bonjour": "3.5.4",
     "@types/chai": "4.0.1",
     "@types/mocha": "2.2.41",
     "@types/node": "8.0.7",

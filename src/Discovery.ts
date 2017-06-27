@@ -1,30 +1,52 @@
+import * as expect from '@fantasticfiasco/expect';
+import * as bonjour from 'bonjour';
 import * as events from 'events';
 
 import { Device } from './';
+import { DeviceMapper } from './DeviceMapper';
 
 export class Discovery {
 
     private readonly eventEmitter = new events.EventEmitter();
+    private readonly deviceMapper = new DeviceMapper();
+    private bonjour?: bonjour.Bonjour;
+    private browser?: bonjour.Browser;
 
     /**
      * Start listen for Bonjour advertisements on all network interface addresses.
      */
-    public async start(): Promise<void> {
-        throw new Error('Not implemented!');
+    public async start() {
+        expect.toNotExist(this.bonjour, 'Discovery has already been started');
+        expect.toNotExist(this.browser, 'Discovery has already been started');
+
+        this.bonjour = bonjour();
+
+        this.browser = this.bonjour.find({ type: 'axis-video' });
+        this.browser.on('up', (service: bonjour.Service) => this.onUp(service));
+        this.browser.on('down', (service: bonjour.Service) => this.onDown(service));
     }
 
     /**
      * Stop listening for Bonjour advertisements.
      */
-    public async stop(): Promise<void> {
-        throw new Error('Not implemented!');
+    public async stop() {
+        expect.toExist(this.bonjour, 'Discovery has not been started');
+        expect.toExist(this.browser, 'Discovery has not been started');
+
+        (this.browser as bonjour.Browser).stop();
+        (this.bonjour as bonjour.Bonjour).destroy();
+
+        this.browser = undefined;
+        this.bonjour = undefined;
     }
 
     /**
      * Triggers a new Bonjour search for devices on the network.
      */
-    public async search(): Promise<void> {
-        throw new Error('Not implemented!');
+    public async search() {
+        expect.toExist(this.browser, 'Discovery has not been started');
+
+        (this.browser as bonjour.Browser).update();
     }
 
     /**
@@ -40,5 +62,19 @@ export class Discovery {
      */
     public onGoodbye(callback: (device: Device) => void) {
         this.eventEmitter.on('goodbye', (device: Device) => callback(device));
+    }
+
+    private onUp(service: bonjour.Service) {
+        const device = this.deviceMapper.fromService(service);
+        if (device) {
+            this.eventEmitter.emit('hello', device);
+        }
+    }
+
+    private onDown(service: bonjour.Service) {
+        const device = this.deviceMapper.fromService(service);
+        if (device) {
+            this.eventEmitter.emit('goodbye', device);
+        }
     }
 }
