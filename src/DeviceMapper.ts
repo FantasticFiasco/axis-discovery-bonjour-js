@@ -5,16 +5,20 @@ import { Device } from './Device';
 export class DeviceMapper {
 
     private static linkLocalPrefix = '169.254';
+
     /**
      * Maps from a Bonjour service to a device.
      */
-    public fromService(service: bonjour.Service): Device | undefined {
+    public fromService(service: any): Device | undefined {
         // Some of the properties of a service are not exposed by the Bonjour type definitions.
         // Because of this we have to regress back to JavaScript and work with these properties
         // untyped.
-        const untypedService = service as any;
+        const typedService = service as bonjour.Service;
+        if (!typedService) {
+            return undefined;
+        }
 
-        const addresses = this.getAddresses(untypedService);
+        const addresses = this.getAddresses(service);
         if (!addresses) {
             return undefined;
         }
@@ -29,7 +33,7 @@ export class DeviceMapper {
             return undefined;
         }
 
-        const macAddress = this.getMacAddress(untypedService);
+        const macAddress = this.getMacAddress(service);
         if (!macAddress) {
             return undefined;
         }
@@ -37,9 +41,9 @@ export class DeviceMapper {
         return new Device(
             address,
             linkLocalAddress,
-            service.port,
+            typedService.port,
             macAddress,
-            service.name);
+            typedService.name);
     }
 
     private getAddresses(service: any): string[] | undefined {
