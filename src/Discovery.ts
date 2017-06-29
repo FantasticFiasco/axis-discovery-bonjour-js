@@ -18,7 +18,7 @@ export class Discovery {
     /**
      * Start listen for Bonjour advertisements on all network interface addresses.
      */
-    public async start() {
+    public start() {
         expect.toNotExist(this.bonjour, 'Discovery has already been started');
         expect.toNotExist(this.browser, 'Discovery has already been started');
 
@@ -32,7 +32,7 @@ export class Discovery {
     /**
      * Stop listening for Bonjour advertisements.
      */
-    public async stop() {
+    public stop() {
         expect.toExist(this.bonjour, 'Discovery has not been started');
         expect.toExist(this.browser, 'Discovery has not been started');
 
@@ -46,7 +46,7 @@ export class Discovery {
     /**
      * Triggers a new Bonjour search for devices on the network.
      */
-    public async search() {
+    public search() {
         expect.toExist(this.browser, 'Discovery has not been started');
 
         (this.browser as bonjour.Browser).update();
