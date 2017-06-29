@@ -2,6 +2,7 @@ import * as chai from 'chai';
 
 import { Device } from './../src/';
 import { DeviceMapper } from './../src/DeviceMapper';
+import { AxisService } from './AxisService';
 
 const should = chai.should();
 
@@ -13,12 +14,11 @@ describe('when mapping to device', () => {
 
         it('should map service to device', function() {
             // Arrange
-            const service = {
-                addresses: [ '192.168.1.102', '169.254.129.36' ],
-                name: 'Lobby',
-                port: 80,
-                txt: { macaddress: 'ACCC8E270AD8' },
-            };
+            const service = new AxisService(
+                [ '192.168.1.102', '169.254.129.36' ],
+                'Lobby',
+                80,
+                'ACCC8E270AD8');
 
             // Act
             const actual = deviceMapper.fromService(service);
@@ -32,59 +32,13 @@ describe('when mapping to device', () => {
             (actual as Device).friendlyName.should.equal('Lobby');
         });
 
-        it('should not map object not being a service', function() {
-            // Arrange
-            const service = {
-                // Missing the 'name' property expected on 'bonjour.Service'
-                port: 80
-            };
-
-            // Act
-            const actual = deviceMapper.fromService(service);
-
-            // Assert
-            should.not.exist(actual);
-        });
-
         it('should not map service without addressses', function() {
             // Arrange
-            const service = {
-                name: 'Lobby',
-                port: 80,
-                txt: { macaddress: 'ACCC8E270AD8' },
-            };
-
-            // Act
-            const actual = deviceMapper.fromService(service);
-
-            // Assert
-            should.not.exist(actual);
-        });
-
-        it('should not map service with addressses of wrong type', function() {
-            // Arrange
-            const service = {
-                addresses: [ 1, 2 ],
-                name: 'Lobby',
-                port: 80,
-                txt: { macaddress: 'ACCC8E270AD8' },
-            };
-
-            // Act
-            const actual = deviceMapper.fromService(service);
-
-            // Assert
-            should.not.exist(actual);
-        });
-
-        it('should not map service with empty addressses', function() {
-            // Arrange
-            const service = {
-                addresses: [ ],
-                name: 'Lobby',
-                port: 80,
-                txt: { macaddress: 'ACCC8E270AD8' },
-            };
+            const service = new AxisService(
+                [],
+                'Lobby',
+                80,
+                'ACCC8E270AD8');
 
             // Act
             const actual = deviceMapper.fromService(service);
@@ -95,12 +49,11 @@ describe('when mapping to device', () => {
 
         it('should not map service without address', function() {
             // Arrange
-            const service = {
-                addresses: [ '169.254.129.36' ],
-                name: 'Lobby',
-                port: 80,
-                txt: { macaddress: 'ACCC8E270AD8' },
-            };
+            const service = new AxisService(
+                [ '169.254.129.36' ],    // Only link local address
+                'Lobby',
+                80,
+                'ACCC8E270AD8');
 
             // Act
             const actual = deviceMapper.fromService(service);
@@ -111,44 +64,42 @@ describe('when mapping to device', () => {
 
         it('should not map service without link local address', function() {
             // Arrange
-            const service = {
-                addresses: [ '192.168.1.102' ],
-                name: 'Lobby',
-                port: 80,
-                txt: { macaddress: 'ACCC8E270AD8' },
-            };
+            const service = new AxisService(
+                [ '192.168.1.102' ],     // Only address
+                'Lobby',
+                80,
+                'ACCC8E270AD8');
 
             // Act
             const actual = deviceMapper.fromService(service);
 
             // Assert
             should.not.exist(actual);
+        });
+
+        it('should map service with MAC address in lower letters', function() {
+            // Arrange
+            const service = new AxisService(
+                [ '192.168.1.102', '169.254.129.36' ],
+                'Lobby',
+                80,
+                'accc8e270ad8');
+
+            // Act
+            const actual = deviceMapper.fromService(service);
+
+            // Assert
+            should.exist(actual);
+            (actual as Device).macAddress.should.equal('ACCC8E270AD8');
         });
 
         it('should not map service without MAC address', function() {
             // Arrange
-            const service = {
-                addresses: [ '192.168.1.102', '169.254.129.36' ],
-                name: 'Lobby',
-                port: 80,
-                txt: { },
-            };
-
-            // Act
-            const actual = deviceMapper.fromService(service);
-
-            // Assert
-            should.not.exist(actual);
-        });
-
-        it('should not map service with MAC address of wrong type', function() {
-            // Arrange
-            const service = {
-                addresses: [ '192.168.1.102', '169.254.129.36' ],
-                name: 'Lobby',
-                port: 80,
-                txt: { macaddress: 1 },
-            };
+            const service = new AxisService(
+                [ '192.168.1.102', '169.254.129.36' ],
+                'Lobby',
+                80,
+                undefined);
 
             // Act
             const actual = deviceMapper.fromService(service);

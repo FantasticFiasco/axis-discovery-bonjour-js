@@ -9,15 +9,7 @@ export class DeviceMapper {
     /**
      * Maps from a Bonjour service to a device.
      */
-    public fromService(service: any): Device | undefined {
-        // Some of the properties of a service are not exposed by the Bonjour type definitions.
-        // Because of this we have to regress back to JavaScript and work with these properties
-        // untyped.
-        const typedService = service as bonjour.Service;
-        if (!typedService) {
-            return undefined;
-        }
-
+    public fromService(service: bonjour.Service): Device | undefined {
         const addresses = this.getAddresses(service);
         if (!addresses) {
             return undefined;
@@ -41,32 +33,41 @@ export class DeviceMapper {
         return new Device(
             address,
             linkLocalAddress,
-            typedService.port,
-            macAddress,
-            typedService.name);
+            service.port,
+            macAddress.toUpperCase(),
+            service.name);
     }
 
     private getAddresses(service: any): string[] | undefined {
-        if (!service.addresses) {
+        if (!service.addresses ||
+            service.addresses instanceof Array === false) {
             return undefined;
         }
 
-        return service.addresses as string[];
+        for (const address of service.addresses) {
+            if (typeof address !== 'string') {
+                return undefined;
+            }
+        }
+
+        return service.addresses;
     }
 
     private getAddress(addresses: string[]): string | undefined {
-        return addresses.find((value) => !value.startsWith(DeviceMapper.linkLocalPrefix));
+        return addresses.find((address) => !address.startsWith(DeviceMapper.linkLocalPrefix));
     }
 
     private getLinkLocalAddress(addresses: string[]): string | undefined {
-        return addresses.find((value) => value.startsWith(DeviceMapper.linkLocalPrefix));
+        return addresses.find((address) => address.startsWith(DeviceMapper.linkLocalPrefix));
     }
 
     private getMacAddress(service: any): string | undefined {
-        if (!service.txt || !service.txt.macaddress) {
+        if (!service.txt ||
+            !service.txt.macaddress ||
+            typeof service.txt.macaddress !== 'string') {
             return undefined;
         }
 
-        return service.txt.macaddress as string;
+        return service.txt.macaddress;
     }
 }
