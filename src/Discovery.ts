@@ -5,6 +5,9 @@ import * as events from 'events';
 import { Device } from './';
 import { DeviceMapper } from './DeviceMapper';
 
+/**
+ * Class responsible for discovering Axis cameras on the network.
+ */
 export class Discovery {
 
     private readonly eventEmitter = new events.EventEmitter();
