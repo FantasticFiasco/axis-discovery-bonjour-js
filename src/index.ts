@@ -1,1 +1,2 @@
-export * from './Placeholder';
+export * from './Device';
+export * from './Discovery';
