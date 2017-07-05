@@ -3,6 +3,7 @@ import * as bonjour from 'bonjour';
 import * as events from 'events';
 
 import { Device } from './';
+import { log } from './Log';
 import { mapFromService } from './Mappings';
 
 /**
@@ -22,6 +23,8 @@ export class Discovery {
         expect.toNotExist(this.bonjour, 'Discovery has already been started');
         expect.toNotExist(this.browser, 'Discovery has already been started');
 
+        log('Discovery#start');
+
         this.bonjour = bonjour();
 
         this.browser = this.bonjour.find({ type: 'axis-video' });
@@ -36,6 +39,8 @@ export class Discovery {
         expect.toExist(this.bonjour, 'Discovery has not been started');
         expect.toExist(this.browser, 'Discovery has not been started');
 
+        log('Discovery#stop');
+
         (this.browser as bonjour.Browser).stop();
         (this.bonjour as bonjour.Bonjour).destroy();
 
@@ -48,6 +53,8 @@ export class Discovery {
      */
     public search() {
         expect.toExist(this.browser, 'Discovery has not been started');
+
+        log('Discovery#search');
 
         (this.browser as bonjour.Browser).update();
     }
@@ -69,16 +76,24 @@ export class Discovery {
     }
 
     private onUp(service: bonjour.Service) {
+        log('Discovery#onUp - %s', service.host);
+
         const device = mapFromService(service);
         if (device) {
             this.eventEmitter.emit('hello', device);
+        } else {
+            log('Discovery#onUp - %s did not map to a device', service.host);
         }
     }
 
     private onDown(service: bonjour.Service) {
+        log('Discovery#onDown - %s', service.host);
+
         const device = mapFromService(service);
         if (device) {
             this.eventEmitter.emit('goodbye', device);
+        } else {
+            log('Discovery#onDown - %s did not map to a device', service.host);
         }
     }
 }

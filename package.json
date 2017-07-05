@@ -45,11 +45,13 @@
   },
   "dependencies": {
     "@fantasticfiasco/expect": "1.0.0",
-    "bonjour": "3.5.0"
+    "bonjour": "3.5.0",
+    "debug": "2.6.8"
   },
   "devDependencies": {
     "@types/bonjour": "3.5.4",
     "@types/chai": "4.0.1",
+    "@types/debug": "0.0.29",
     "@types/mocha": "2.2.41",
     "@types/node": "8.0.7",
     "chai": "4.0.2",
