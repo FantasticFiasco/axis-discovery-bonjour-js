@@ -4,4 +4,4 @@ export function log(formatter: any, ...args: any[]) {
     logger(formatter, ...args);
 }
 
-const logger = debug('axis-discovery-ssdp');
+const logger = debug('axis-discovery-bonjour');
