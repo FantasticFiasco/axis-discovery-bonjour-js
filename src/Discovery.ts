@@ -41,10 +41,12 @@ export class Discovery {
 
         log('Discovery#stop');
 
+        (this.browser as bonjour.Browser).removeAllListeners('up');
+        (this.browser as bonjour.Browser).removeAllListeners('down');
         (this.browser as bonjour.Browser).stop();
-        (this.bonjour as bonjour.Bonjour).destroy();
-
         this.browser = undefined;
+
+        (this.bonjour as bonjour.Bonjour).destroy();
         this.bonjour = undefined;
     }
 
