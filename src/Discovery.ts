@@ -16,7 +16,8 @@ export class Discovery {
     private browser?: bonjour.Browser;
 
     /**
-     * Start listen for Bonjour advertisements on all network interface addresses.
+     * Start listen for device advertisements on all network interface
+     * addresses.
      */
     public start() {
         expect.toNotExist(this.bonjour, 'Discovery has already been started');
@@ -30,7 +31,7 @@ export class Discovery {
     }
 
     /**
-     * Stop listening for Bonjour advertisements.
+     * Stop listening for device advertisements.
      */
     public stop() {
         expect.toExist(this.bonjour, 'Discovery has not been started');
@@ -44,7 +45,7 @@ export class Discovery {
     }
 
     /**
-     * Triggers a new Bonjour search for devices on the network.
+     * Triggers a new search for devices on the network.
      */
     public search() {
         expect.toExist(this.browser, 'Discovery has not been started');
@@ -53,15 +54,16 @@ export class Discovery {
     }
 
     /**
-     * Register a callback that is invoked when a device is found on the network.
+     * Register a callback that is invoked when a device is found on the
+     * network.
      */
     public onHello(callback: (device: Device) => void) {
         this.eventEmitter.on('hello', (device: Device) => callback(device));
     }
 
     /**
-     * Register a callback that is invoked when a device intentionally is disconnecting from the
-     * network.
+     * Register a callback that is invoked when a device intentionally is
+     * disconnecting from the network.
      */
     public onGoodbye(callback: (device: Device) => void) {
         this.eventEmitter.on('goodbye', (device: Device) => callback(device));
