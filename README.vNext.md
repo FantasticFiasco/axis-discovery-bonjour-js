@@ -52,28 +52,30 @@ The `Discovery` class is the main class in the package. With it you can register
 ```javascript
 class Discovery {
     /**
-     * Start listen for Bonjour advertisements on all network interface addresses.
+     * Start listen for device advertisements on all network interface
+     * addresses.
      */
     start(): void;
 
     /**
-     * Stop listening for Bonjour advertisements.
+     * Stop listening for device advertisements.
      */
     stop(): void;
 
     /**
-     * Triggers a new Bonjour search for devices on the network.
+     * Triggers a new search for devices on the network.
      */
     search(): void;
 
     /**
-     * Register a callback that is invoked when a device is found on the network.
+     * Register a callback that is invoked when a device is found on the
+     * network.
      */
     onHello(callback: (device: Device) => void): void;
 
     /**
-     * Register a callback that is invoked when a device intentionally is disconnecting from the
-     * network.
+     * Register a callback that is invoked when a device intentionally is
+     * disconnecting from the network.
      */
     onGoodbye(callback: (device: Device) => void): void;
 }
@@ -84,37 +86,42 @@ class Discovery {
 The `Device` class is a immutable description of a camera on the network.
 
 ```javascript
+/**
+ * Class describing a device on the network.
+ */
 class Device {
     /**
-     * The address.
+     * Gets the address.
      */
     readonly address: string;
 
     /**
-     * The link local address.
+     * Gets the link local address.
      * For more information regarding link local addresses, please see
      * [here]{@link https://wikipedia.org/wiki/Link-local_address}.
      */
     readonly linkLocalAddress: string;
 
     /**
-     * The port.
+     * Gets the port.
      */
     readonly port: number;
 
     /**
-     * The MAC address. In most situations this is identical to the serial number. The
-     * exceptions are the Axis products which bundle multiple physical devices into a single
-     * casing with a shared network interface. Because of the shared network interface they
-     * also share the same MAC address.
+     * Gets the MAC address. In most situations this is identical to the
+     * serial number. The exceptions are the Axis products which bundle
+     * multiple physical devices into a single casing with a shared network
+     * interface. Because of the shared network interface they also share
+     * the same MAC address.
      */
     readonly macAddress: string;
 
     /**
-     * The short description for the end user.
+     * Gets the short description for the end user.
      */
     readonly friendlyName: string;
 }
+
 ```
 
 ## Credit

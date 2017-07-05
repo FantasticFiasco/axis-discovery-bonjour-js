@@ -1,14 +1,12 @@
 import * as chai from 'chai';
 
 import { Device } from './../src/';
-import { DeviceMapper } from './../src/DeviceMapper';
+import { mapFromService } from './../src/Mappings';
 import { AxisService } from './AxisService';
 
 const should = chai.should();
 
 describe('when mapping to device', () => {
-
-    const deviceMapper = new DeviceMapper();
 
     describe('#fromService', () => {
 
@@ -21,7 +19,7 @@ describe('when mapping to device', () => {
                 'ACCC8E270AD8');
 
             // Act
-            const actual = deviceMapper.fromService(service);
+            const actual = mapFromService(service);
 
             // Assert
             should.exist(actual);
@@ -41,7 +39,7 @@ describe('when mapping to device', () => {
                 'ACCC8E270AD8');
 
             // Act
-            const actual = deviceMapper.fromService(service);
+            const actual = mapFromService(service);
 
             // Assert
             should.not.exist(actual);
@@ -56,7 +54,7 @@ describe('when mapping to device', () => {
                 'ACCC8E270AD8');
 
             // Act
-            const actual = deviceMapper.fromService(service);
+            const actual = mapFromService(service);
 
             // Assert
             should.not.exist(actual);
@@ -71,7 +69,7 @@ describe('when mapping to device', () => {
                 'ACCC8E270AD8');
 
             // Act
-            const actual = deviceMapper.fromService(service);
+            const actual = mapFromService(service);
 
             // Assert
             should.not.exist(actual);
@@ -86,7 +84,7 @@ describe('when mapping to device', () => {
                 'accc8e270ad8');
 
             // Act
-            const actual = deviceMapper.fromService(service);
+            const actual = mapFromService(service);
 
             // Assert
             should.exist(actual);
@@ -102,7 +100,7 @@ describe('when mapping to device', () => {
                 undefined);
 
             // Act
-            const actual = deviceMapper.fromService(service);
+            const actual = mapFromService(service);
 
             // Assert
             should.not.exist(actual);

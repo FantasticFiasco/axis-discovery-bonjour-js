@@ -2,7 +2,11 @@ import * as bonjour from 'bonjour';
 import * as events from 'events';
 
 export class AxisService extends events.EventEmitter implements bonjour.Service {
-    constructor(addresses: string[], name: string, port: number, macAddress: string | undefined) {
+    constructor(
+            addresses: string[],
+            name: string,
+            port: number,
+            macAddress: string | undefined) {
         super();
 
         this.addresses = addresses;
