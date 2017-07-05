@@ -3,7 +3,7 @@ import * as bonjour from 'bonjour';
 import * as events from 'events';
 
 import { Device } from './';
-import { DeviceMapper } from './DeviceMapper';
+import { mapFromService } from './Mappings';
 
 /**
  * Class responsible for discovering Axis cameras on the network.
@@ -11,7 +11,6 @@ import { DeviceMapper } from './DeviceMapper';
 export class Discovery {
 
     private readonly eventEmitter = new events.EventEmitter();
-    private readonly deviceMapper = new DeviceMapper();
     private bonjour?: bonjour.Bonjour;
     private browser?: bonjour.Browser;
 
@@ -70,14 +69,14 @@ export class Discovery {
     }
 
     private onUp(service: bonjour.Service) {
-        const device = this.deviceMapper.fromService(service);
+        const device = mapFromService(service);
         if (device) {
             this.eventEmitter.emit('hello', device);
         }
     }
 
     private onDown(service: bonjour.Service) {
-        const device = this.deviceMapper.fromService(service);
+        const device = mapFromService(service);
         if (device) {
             this.eventEmitter.emit('goodbye', device);
         }
