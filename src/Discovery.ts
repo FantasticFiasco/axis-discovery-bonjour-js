@@ -82,7 +82,7 @@ export class Discovery {
         if (device) {
             this.eventEmitter.emit('hello', device);
         } else {
-            log('Discovery#onUp - %s did not map to a device', service.host);
+            log('Discovery#onUp - unable to map: %o', service);
         }
     }
 
@@ -93,7 +93,7 @@ export class Discovery {
         if (device) {
             this.eventEmitter.emit('goodbye', device);
         } else {
-            log('Discovery#onDown - %s did not map to a device', service.host);
+            log('Discovery#onDown - unable to map: %o', service);
         }
     }
 }
