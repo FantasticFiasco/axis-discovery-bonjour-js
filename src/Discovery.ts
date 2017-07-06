@@ -25,11 +25,7 @@ export class Discovery {
 
         log('Discovery#start');
 
-        this.bonjour = bonjour();
-
-        this.browser = this.bonjour.find({ type: 'axis-video' });
-        this.browser.on('up', (service: bonjour.Service) => this.onUp(service));
-        this.browser.on('down', (service: bonjour.Service) => this.onDown(service));
+        this.setup();
     }
 
     /**
@@ -41,13 +37,7 @@ export class Discovery {
 
         log('Discovery#stop');
 
-        (this.browser as bonjour.Browser).removeAllListeners('up');
-        (this.browser as bonjour.Browser).removeAllListeners('down');
-        (this.browser as bonjour.Browser).stop();
-        this.browser = undefined;
-
-        (this.bonjour as bonjour.Bonjour).destroy();
-        this.bonjour = undefined;
+        this.teardown();
     }
 
     /**
@@ -97,5 +87,23 @@ export class Discovery {
         } else {
             log('Discovery#onDown - unable to map %o', service);
         }
+    }
+
+    private setup() {
+        this.bonjour = bonjour();
+
+        this.browser = this.bonjour.find({ type: 'axis-video' });
+        this.browser.on('up', (service: bonjour.Service) => this.onUp(service));
+        this.browser.on('down', (service: bonjour.Service) => this.onDown(service));
+    }
+
+    private teardown() {
+        (this.browser as bonjour.Browser).removeAllListeners('up');
+        (this.browser as bonjour.Browser).removeAllListeners('down');
+        (this.browser as bonjour.Browser).stop();
+        this.browser = undefined;
+
+        (this.bonjour as bonjour.Bonjour).destroy();
+        this.bonjour = undefined;
     }
 }
