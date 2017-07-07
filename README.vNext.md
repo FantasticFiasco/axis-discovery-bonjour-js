@@ -98,7 +98,7 @@ class Device {
     /**
      * Gets the link local address.
      * For more information regarding link local addresses, please see
-     * [here]{@link https://wikipedia.org/wiki/Link-local_address}.
+     * [Wikipedia]{@link https://wikipedia.org/wiki/Link-local_address}.
      */
     readonly linkLocalAddress: string;
 
