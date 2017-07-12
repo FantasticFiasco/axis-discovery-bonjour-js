@@ -5,6 +5,7 @@ import * as events from 'events';
 import { Device } from './';
 import { log } from './Log';
 import { mapFromService } from './Mappings';
+import { getIPv4Addresses } from './NetworkInterface';
 
 /**
  * Class responsible for discovering Axis cameras on the network.
@@ -90,7 +91,13 @@ export class Discovery {
     }
 
     private setup() {
-        this.bonjour = bonjour();
+        const addresses = getIPv4Addresses();
+        log('Discovery#setup - interface addresses: %o', addresses);
+
+        // The type definitions are not in sync with the fork of Bonjour I am
+        // depending on, that's why we have to go to the dark side
+        const untypedBonjour: any = bonjour;
+        this.bonjour =  untypedBonjour({ interface: addresses }) as bonjour.Bonjour;
 
         this.browser = this.bonjour.find({ type: 'axis-video' });
         this.browser.on('up', (service: bonjour.Service) => this.onUp(service));
