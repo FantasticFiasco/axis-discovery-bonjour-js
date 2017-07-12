@@ -6,7 +6,7 @@ import { AxisService } from './AxisService';
 
 const should = chai.should();
 
-describe('when mapping to device', () => {
+describe('Mappings', () => {
 
     describe('#fromService', () => {
 
