@@ -2,7 +2,7 @@ import * as chai from 'chai';
 
 import { Device } from './../src/';
 import { mapFromService } from './../src/Mappings';
-import { AxisService } from './AxisService';
+import { AxisService } from './Mappings.mock';
 
 const should = chai.should();
 
