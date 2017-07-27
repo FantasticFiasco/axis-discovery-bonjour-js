@@ -3,10 +3,10 @@ import * as events from 'events';
 
 export class AxisService extends events.EventEmitter implements bonjour.Service {
     constructor(
-            addresses: string[],
-            name: string,
-            port: number,
-            macAddress: string | undefined) {
+        addresses: string[],
+        name: string,
+        port: number,
+        macAddress: string | undefined) {
         super();
 
         this.addresses = addresses;
@@ -30,7 +30,7 @@ export class AxisService extends events.EventEmitter implements bonjour.Service 
     };
 
     get host(): string {
-        return `axis-${(this.macAddress as string).toLowerCase()}.local`;
+        return `axis-${this.macAddress!.toLowerCase()}.local`;
     }
 
     get txt(): Object {
@@ -43,6 +43,6 @@ export class AxisService extends events.EventEmitter implements bonjour.Service 
         return {};
     }
 
-    stop(_: () => any): void {}
-    start(): void {}
+    stop(_: () => any): void { }
+    start(): void { }
 }

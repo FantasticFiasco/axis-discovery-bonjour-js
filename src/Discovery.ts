@@ -49,7 +49,7 @@ export class Discovery {
 
         log('Discovery#search');
 
-        (this.browser as bonjour.Browser).update();
+        this.browser!.update();
     }
 
     /**
@@ -97,7 +97,7 @@ export class Discovery {
         // The type definitions are not in sync with the fork of Bonjour I am
         // depending on, that's why we have to go to the dark side
         const untypedBonjour: any = bonjour;
-        this.bonjour =  untypedBonjour({ interface: addresses }) as bonjour.Bonjour;
+        this.bonjour = untypedBonjour({ interface: addresses }) as bonjour.Bonjour;
 
         this.browser = this.bonjour.find({ type: 'axis-video' });
         this.browser.on('up', (service: bonjour.Service) => this.onUp(service));
@@ -105,12 +105,12 @@ export class Discovery {
     }
 
     private teardown() {
-        (this.browser as bonjour.Browser).removeAllListeners('up');
-        (this.browser as bonjour.Browser).removeAllListeners('down');
-        (this.browser as bonjour.Browser).stop();
+        this.browser!.removeAllListeners('up');
+        this.browser!.removeAllListeners('down');
+        this.browser!.stop();
         this.browser = undefined;
 
-        (this.bonjour as bonjour.Bonjour).destroy();
+        this.bonjour!.destroy();
         this.bonjour = undefined;
     }
 }
