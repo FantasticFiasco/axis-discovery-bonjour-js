@@ -6,9 +6,9 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@fantasticfiasco/expect/-/expect-1.0.0.tgz#fc700aee52122b3bc62a95b8ab95ffa4b65967ba"
 
-"@types/bonjour@3.5.4":
-  version "3.5.4"
-  resolved "https://registry.yarnpkg.com/@types/bonjour/-/bonjour-3.5.4.tgz#9b785c7779625d0c561983ac6ba7f5b516dfff13"
+"@types/bonjour@3.5.5":
+  version "3.5.5"
+  resolved "https://registry.yarnpkg.com/@types/bonjour/-/bonjour-3.5.5.tgz#98e11e61c4ddf444fb9d97cb84944457c910b6f0"
   dependencies:
     "@types/node" "*"
 
