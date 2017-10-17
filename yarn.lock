@@ -28,9 +28,9 @@
   version "8.0.28"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.28.tgz#86206716f8d9251cf41692e384264cbd7058ad60"
 
-"@types/node@8.0.38":
-  version "8.0.38"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.38.tgz#2653bd7adbe100970e30836680ce94cff1f8591a"
+"@types/node@8.0.42":
+  version "8.0.42"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.42.tgz#64b9d17890fc043b4e8608e18b925c317776b386"
 
 "@types/sinon@2.3.6":
   version "2.3.6"
