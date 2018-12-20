@@ -42,6 +42,8 @@ discovery.search();
 
 ```sh
 npm install axis-discovery-bonjour
+# or
+yarn add axis-discovery-bonjour
 ```
 
 ## API
