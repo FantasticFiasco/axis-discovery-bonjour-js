@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+### :syringe: Fixed
+
+- npm package content
+
 ## [1.0.1] - 2019-01-07
 
 ### :syringe: Fixed

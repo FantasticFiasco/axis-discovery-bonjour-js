@@ -17,6 +17,7 @@ script:
   - yarn lint
 
 deploy:
+  skip_cleanup: true
   provider: npm
   email: mattias.kindborg@gmail.com
   api_key:
