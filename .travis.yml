@@ -15,3 +15,11 @@ script:
   - if [ "$TRAVIS_NODE_VERSION" == "node" ]; then yarn coverage:publish; fi
   - if [ "$TRAVIS_NODE_VERSION" != "node" ]; then yarn test; fi
   - yarn lint
+
+deploy:
+  provider: npm
+  email: mattias.kindborg@gmail.com
+  api_key:
+    secure: pmde2kG0zKuDcQW6FKw0ZhdqwcWv8vMlif6zD/MaGt0u2/dNQxNx8boAiQTVwTwpODtJeQB6WLeK0JPT6tMc+Glk70jA6q3+DcdXbyk2M3aB6og1ecnZ3Ff59+3ocyYd9ciPWvfbFzoZ4slKg1J3fRrTfDNSVUfvdZNEQUP4Eq8DSlEC4M0m2clA/cQjYix6opLlRg5cjbufSpPqZzoP9H3/V2VWbezini1QEFOeUNuruC+dwhg5OIpDluNYBDBi/j43fgyFKkfZCIjRUZSK+2szv1UZ/+VWKUxFAf3T2s+cfwiBIHnGx4qe0EujiRfl2NI2VgWsk1tJyTO89QM6hZvOUxa61DNlfauNWthwG0Uky7TEP8/CIznmr6hFxXJ9/5pQ0v7IWKEbsg1DgPPk3h6z5qgcSZjJIBJ3Q7+35nXONXZGlM9GaTlVG3xT91Qf6U7f7H3nInWg7KJyJScOuHw51y0KkVeThrsmsBnQjjT3ozysx5JbMKGqSkyeZKWEXhub7lL6ZLhO7Io6BS/YAiPoV1pmAYHMPn7cflJd8I0ZZKuM4NpNUbWo0wdN4PnsnEainf96ynUv78u5oyP6shMCObZblwjdHG0KpLDxjZh9nyE7EKpYSG22cuPPSV+966cvG0miggi/53l8abq9ZGcfKFuWe6H6Hin/5ht8H8o=
+  on:
+    tags: true
