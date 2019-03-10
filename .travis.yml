@@ -17,10 +17,16 @@ script:
   - yarn lint
 
 deploy:
-  skip_cleanup: true
-  provider: npm
-  email: mattias.kindborg@gmail.com
-  api_key:
-    secure: pmde2kG0zKuDcQW6FKw0ZhdqwcWv8vMlif6zD/MaGt0u2/dNQxNx8boAiQTVwTwpODtJeQB6WLeK0JPT6tMc+Glk70jA6q3+DcdXbyk2M3aB6og1ecnZ3Ff59+3ocyYd9ciPWvfbFzoZ4slKg1J3fRrTfDNSVUfvdZNEQUP4Eq8DSlEC4M0m2clA/cQjYix6opLlRg5cjbufSpPqZzoP9H3/V2VWbezini1QEFOeUNuruC+dwhg5OIpDluNYBDBi/j43fgyFKkfZCIjRUZSK+2szv1UZ/+VWKUxFAf3T2s+cfwiBIHnGx4qe0EujiRfl2NI2VgWsk1tJyTO89QM6hZvOUxa61DNlfauNWthwG0Uky7TEP8/CIznmr6hFxXJ9/5pQ0v7IWKEbsg1DgPPk3h6z5qgcSZjJIBJ3Q7+35nXONXZGlM9GaTlVG3xT91Qf6U7f7H3nInWg7KJyJScOuHw51y0KkVeThrsmsBnQjjT3ozysx5JbMKGqSkyeZKWEXhub7lL6ZLhO7Io6BS/YAiPoV1pmAYHMPn7cflJd8I0ZZKuM4NpNUbWo0wdN4PnsnEainf96ynUv78u5oyP6shMCObZblwjdHG0KpLDxjZh9nyE7EKpYSG22cuPPSV+966cvG0miggi/53l8abq9ZGcfKFuWe6H6Hin/5ht8H8o=
-  on:
-    tags: true
+  - provider: npm
+    email: mattias.kindborg@gmail.com
+    api_key:
+      secure: pmde2kG0zKuDcQW6FKw0ZhdqwcWv8vMlif6zD/MaGt0u2/dNQxNx8boAiQTVwTwpODtJeQB6WLeK0JPT6tMc+Glk70jA6q3+DcdXbyk2M3aB6og1ecnZ3Ff59+3ocyYd9ciPWvfbFzoZ4slKg1J3fRrTfDNSVUfvdZNEQUP4Eq8DSlEC4M0m2clA/cQjYix6opLlRg5cjbufSpPqZzoP9H3/V2VWbezini1QEFOeUNuruC+dwhg5OIpDluNYBDBi/j43fgyFKkfZCIjRUZSK+2szv1UZ/+VWKUxFAf3T2s+cfwiBIHnGx4qe0EujiRfl2NI2VgWsk1tJyTO89QM6hZvOUxa61DNlfauNWthwG0Uky7TEP8/CIznmr6hFxXJ9/5pQ0v7IWKEbsg1DgPPk3h6z5qgcSZjJIBJ3Q7+35nXONXZGlM9GaTlVG3xT91Qf6U7f7H3nInWg7KJyJScOuHw51y0KkVeThrsmsBnQjjT3ozysx5JbMKGqSkyeZKWEXhub7lL6ZLhO7Io6BS/YAiPoV1pmAYHMPn7cflJd8I0ZZKuM4NpNUbWo0wdN4PnsnEainf96ynUv78u5oyP6shMCObZblwjdHG0KpLDxjZh9nyE7EKpYSG22cuPPSV+966cvG0miggi/53l8abq9ZGcfKFuWe6H6Hin/5ht8H8o=
+    skip_cleanup: true
+    on:
+      tags: true
+  - provider: releases
+    name: Release $TRAVIS_TAG
+    api_key:
+      secure: OBhpEwtOEZw/4NkLxtGD+DRbQsGSWjjymSWSQItQHzeOvcZ07SNZnA9qhRllfvBS6+LGDjB+N9aNGJHeH0UiogE+dvaUUzt5RL2Txn0H25lu+4XpSW1L0IPCbJg70ZSIGOLdHG4glw2v2N2ykZkMYsQsTUY9Qc8NdOyySpWlUd6aLrAeAn6Pm94iaXb9Lbdm44QhIDELHkJ70eqwtajEShHuGndgznuMfyKq01nYor6slcpWQicbYw0r1nFyNGxFC2+1rY4gDHA3pAm4M0MYJVzUOoa6puZC71WrWx1Wh2kXrTiniEurcAqwsoD68qLAKAhFtuj/cqhZO9st/N8XMMPJ3A5JDxph9bWI/PI10NGMo+u+CMUZW7OoDbDOrAXyBmbLqzpgdCuIKDUxeXs9axHwxpbwtqdw4NvYeJnF8ghfLXik8VWMXb2/E777M1p6ZPsSH+T/a+kijfS48QZkxH5FY+66sC01SvMLdewZjR6JUYUkReMfGbR1Ha6EsZyMw9l9fxMih8tQ7UrLosMcXhqvqfrmzuNHLkui9QOur2bJz8UMdV1qAdi+cKNhJ3Fo3NGjQvoHmtOCw9B3Kx0twiCOJcMoeh0kHXbjZo3+qBQfpqxw0Dc/ur8kowanPg9uuw0YxxVIcxPlaWMcNgsYZ0lUpFKgXgOv/xxKKGP0/fc=
+    on:
+      tags: true
