@@ -1,14 +1,14 @@
 # axis-discovery-bonjour
 
-[![Build Status](https://travis-ci.org/FantasticFiasco/axis-discovery-bonjour.svg?branch=master)](https://travis-ci.org/FantasticFiasco/axis-discovery-bonjour)
-[![Coverage Status](https://coveralls.io/repos/github/FantasticFiasco/axis-discovery-bonjour/badge.svg)](https://coveralls.io/github/FantasticFiasco/axis-discovery-bonjour)
+[![Build Status](https://travis-ci.org/FantasticFiasco/axis-discovery-bonjour-js.svg?branch=master)](https://travis-ci.org/FantasticFiasco/axis-discovery-bonjour-js)
+[![Coverage Status](https://coveralls.io/repos/github/FantasticFiasco/axis-discovery-bonjour-js/badge.svg)](https://coveralls.io/github/FantasticFiasco/axis-discovery-bonjour-js)
 [![npm version](https://img.shields.io/npm/v/axis-discovery-bonjour.svg)](https://www.npmjs.com/package/axis-discovery-bonjour)
-[![dependencies Status](https://david-dm.org/FantasticFiasco/axis-discovery-bonjour/status.svg)](https://david-dm.org/FantasticFiasco/axis-discovery-bonjour)
-[![devDependencies Status](https://david-dm.org/FantasticFiasco/axis-discovery-bonjour/dev-status.svg)](https://david-dm.org/FantasticFiasco/axis-discovery-bonjour?type=dev)
+[![dependencies Status](https://david-dm.org/FantasticFiasco/axis-discovery-bonjour-js/status.svg)](https://david-dm.org/FantasticFiasco/axis-discovery-bonjour-js)
+[![devDependencies Status](https://david-dm.org/FantasticFiasco/axis-discovery-bonjour-js/dev-status.svg)](https://david-dm.org/FantasticFiasco/axis-discovery-bonjour-js?type=dev)
 
 A Node.js Bonjour client library written in TypeScript capable of searching for [Axis Communication](http://www.axis.com) cameras.
 
-To also find cameras on the network using SSDP (UPnP), please see [axis-discovery](https://github.com/FantasticFiasco/axis-discovery).
+To also find cameras on the network using SSDP (UPnP), please see [axis-discovery](https://github.com/FantasticFiasco/axis-discovery-js).
 
 ## Table of contents
 
