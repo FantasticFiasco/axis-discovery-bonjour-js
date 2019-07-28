@@ -14,6 +14,7 @@ To also find cameras on the network using SSDP (UPnP), please see [axis-discover
 
 - [Super simple to use](#super-simple-to-use)
 - [Installation](#installation)
+- [Family of packages](#family-of-packages)
 - [API](#api)
 - [Credit](#credit)
 
@@ -45,6 +46,16 @@ npm install axis-discovery-bonjour
 # or
 yarn add axis-discovery-bonjour
 ```
+
+## Family of packages
+
+The following NPM packages have been created to provide a smooth experience with devices from Axis Communications.
+
+- [axis-discovery](https://github.com/FantasticFiasco/axis-discovery-js) - A Node.js client library written in TypeScript capable of searching for Axis Communication cameras using Bonjour and SSDP (UPnP).
+    - `axis-discovery-bonjour` - This package
+    - [axis-discovery-ssdp](https://github.com/FantasticFiasco/axis-discovery-ssdp-js) - A Node.js SSDP (UPnP) client library written in TypeScript capable of searching for Axis Communication cameras.
+- [axis-configuration](https://github.com/FantasticFiasco/axis-configuration-js) - A Node.js library written in TypeScript capable of configuring Axis Communication cameras.
+
 
 ## API
 
