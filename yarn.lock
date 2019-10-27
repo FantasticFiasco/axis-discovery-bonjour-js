@@ -259,9 +259,9 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-bonjour@FantasticFiasco/bonjour#66851c5:
+bonjour@FantasticFiasco-Forks/bonjour#66851c5:
   version "3.5.0"
-  resolved "https://codeload.github.com/FantasticFiasco/bonjour/tar.gz/66851c5"
+  resolved "https://codeload.github.com/FantasticFiasco-Forks/bonjour/tar.gz/66851c5eb0360fc9297eef40d18196487a71c48a"
   dependencies:
     array-flatten "^2.1.0"
     deep-equal "^1.0.1"
