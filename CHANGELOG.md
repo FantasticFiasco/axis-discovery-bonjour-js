@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [1.0.6] - 2019-10-30
+
+### :syringe: Fixed
+
+- Update dependencies
+
 ## [1.0.5] - 2019-07-14
 
 ### :policeman: Security
