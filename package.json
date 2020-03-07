@@ -11,13 +11,13 @@
     "bonjour",
     "zero-configuration"
   ],
-  "homepage": "https://github.com/FantasticFiasco/axis-discovery-bonjour",
+  "homepage": "https://github.com/FantasticFiasco/axis-discovery-bonjour-js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/FantasticFiasco/axis-discovery-bonjour.git"
+    "url": "https://github.com/FantasticFiasco/axis-discovery-bonjour-js.git"
   },
   "bugs": {
-    "url": "https://github.com/FantasticFiasco/axis-discovery-bonjour/issues"
+    "url": "https://github.com/FantasticFiasco/axis-discovery-bonjour-js/issues"
   },
   "author": "Mattias Kindborg <mattias.kindborg@gmail.com> (https://twitter.com/FantasticFiasco)",
   "license": "Apache-2.0",
