@@ -1,5 +1,5 @@
 import * as expect from '@fantasticfiasco/expect';
-import * as bonjour from 'bonjour';
+import * as bonjour from '../vendor/bonjour';
 import * as events from 'events';
 
 import { Device } from './';

@@ -1,4 +1,4 @@
-import * as bonjour from 'bonjour';
+import * as bonjour from '../vendor/bonjour';
 
 import { Device } from './Device';
 

@@ -14,7 +14,7 @@ test/**/*.js
 **/*.tgz
 
 ## Deliverables directory
-lib
+/lib
 
 ## Code coverage
 coverage

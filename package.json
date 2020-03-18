@@ -44,7 +44,6 @@
   },
   "dependencies": {
     "@fantasticfiasco/expect": "1.*",
-    "bonjour": "FantasticFiasco-Forks/bonjour#66851c5",
     "debug": "4.*"
   },
   "devDependencies": {
