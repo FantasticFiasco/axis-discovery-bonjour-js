@@ -7,20 +7,38 @@ function readPackage(directory) {
     return JSON.parse(content);
 }
 
-const target = readPackage('.');
-const sources = [
-    readPackage('vendor/bonjour'),
-    readPackage('vendor/multicast-dns')
-];
+function sort(dependencies) {
+    const result = {};
 
-for (const source of sources) {
-    for (const dependency in source.dependencies) {
-        if (target.dependencies.hasOwnProperty(dependency)) {
-            throw new Error(`Target package already has a dependency to ${dependency}, how should we mege these?`);
-        }
+    Object.keys(dependencies).sort().forEach(key => {
+        result[key] = dependencies[key];
+      });
 
-        target.dependencies[dependency] = source.dependencies[dependency];
-    }
+    return result;
 }
 
-fs.writeFileSync('./package.json', JSON.stringify(target, null, 2));
+const thisPackage = readPackage('.');
+const bonjour = readPackage('vendor/bonjour');
+const multicastDns = readPackage('vendor/multicast-dns');
+
+const dependencies = sort({
+    ...thisPackage.dependencies,
+    ...bonjour.dependencies,
+    ...multicastDns.dependencies
+});
+
+thisPackage.dependencies = dependencies;
+
+fs.writeFileSync('./package.json', JSON.stringify(thisPackage, null, 2));
+
+// for (const source of sources) {
+//     for (const dependency in source.dependencies) {
+//         if (target.dependencies.hasOwnProperty(dependency)) {
+//             throw new Error(`Target package already has a dependency to ${dependency}, how should we mege these?`);
+//         }
+
+//         target.dependencies[dependency] = source.dependencies[dependency];
+//     }
+// }
+
+
