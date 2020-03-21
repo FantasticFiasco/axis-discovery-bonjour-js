@@ -30,15 +30,3 @@ const dependencies = sort({
 thisPackage.dependencies = dependencies;
 
 fs.writeFileSync('./package.json', JSON.stringify(thisPackage, null, 2));
-
-// for (const source of sources) {
-//     for (const dependency in source.dependencies) {
-//         if (target.dependencies.hasOwnProperty(dependency)) {
-//             throw new Error(`Target package already has a dependency to ${dependency}, how should we mege these?`);
-//         }
-
-//         target.dependencies[dependency] = source.dependencies[dependency];
-//     }
-// }
-
-
