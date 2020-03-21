@@ -44,7 +44,15 @@
   },
   "dependencies": {
     "@fantasticfiasco/expect": "1.*",
-    "debug": "4.*"
+    "array-flatten": "^2.1.0",
+    "debug": "4.*",
+    "deep-equal": "^1.0.1",
+    "dns-equal": "^1.0.0",
+    "dns-packet": "^1.0.1",
+    "dns-txt": "^2.0.2",
+    "multicast-dns-service-types": "^1.1.0",
+    "multicast-dns": "FantasticFiasco/multicast-dns#1b0bb3d",
+    "thunky": "^0.1.0"
   },
   "devDependencies": {
     "@types/bonjour": "3.5.6",
