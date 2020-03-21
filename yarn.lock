@@ -1258,13 +1258,6 @@ multicast-dns-service-types@^1.1.0:
   resolved "https://registry.yarnpkg.com/multicast-dns-service-types/-/multicast-dns-service-types-1.1.0.tgz#899f11d9686e5e05cb91b35d5f0e63b773cfc901"
   integrity sha1-iZ8R2WhuXgXLkbNdXw5jt3PPyQE=
 
-multicast-dns@FantasticFiasco/multicast-dns#1b0bb3d:
-  version "6.1.1"
-  resolved "https://codeload.github.com/FantasticFiasco/multicast-dns/tar.gz/1b0bb3da37a07fb9771e2244999c21989dab84c2"
-  dependencies:
-    dns-packet "^1.0.1"
-    thunky "^0.1.0"
-
 neo-async@^2.6.0:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"

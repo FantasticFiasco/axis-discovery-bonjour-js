@@ -51,7 +51,6 @@
     "dns-equal": "^1.0.0",
     "dns-packet": "^1.0.1",
     "dns-txt": "^2.0.2",
-    "multicast-dns": "FantasticFiasco/multicast-dns#1b0bb3d",
     "multicast-dns-service-types": "^1.1.0",
     "thunky": "^0.1.0"
   },
