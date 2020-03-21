@@ -1,5 +1,14 @@
 {
   "extends": [
     "github>FantasticFiasco/renovate-config"
+  ],
+  "ignoreDeps": [
+    "array-flatten",
+    "deep-equal",
+    "dns-equal",
+    "dns-packet",
+    "dns-txt",
+    "multicast-dns-service-types",
+    "thunky"
   ]
 }
