@@ -10,5 +10,8 @@
     "dns-txt",
     "multicast-dns-service-types",
     "thunky"
+  ],
+  "ignorePaths": [
+    "vendor"
   ]
 }
