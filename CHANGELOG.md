@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+### :dizzy: Changed
+
+- Vendor dependencies [bonjour](https://github.com/FantasticFiasco-Forks/bonjour) and [multicast-dns](https://github.com/FantasticFiasco-Forks/multicast-dns)
+
 ## [1.0.7] - 2019-12-27
 
 ### :policeman: Security
