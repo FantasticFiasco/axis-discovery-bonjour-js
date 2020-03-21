@@ -40,12 +40,20 @@
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec --recursive",
     "postcoverage": "remap-istanbul --input coverage/coverage.json --type lcovonly --output coverage/lcov.info",
     "precoverage:publish": "yarn coverage",
-    "coverage:publish": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "coverage:publish": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "merge-dependencies": "node ./build/merge-dependencies.js"
   },
   "dependencies": {
     "@fantasticfiasco/expect": "1.*",
-    "bonjour": "FantasticFiasco-Forks/bonjour#66851c5",
-    "debug": "4.*"
+    "array-flatten": "^2.1.0",
+    "debug": "4.*",
+    "deep-equal": "^1.0.1",
+    "dns-equal": "^1.0.0",
+    "dns-packet": "^1.0.1",
+    "dns-txt": "^2.0.2",
+    "multicast-dns": "FantasticFiasco/multicast-dns#1b0bb3d",
+    "multicast-dns-service-types": "^1.1.0",
+    "thunky": "^0.1.0"
   },
   "devDependencies": {
     "@types/bonjour": "3.5.6",
