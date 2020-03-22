@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## [1.0.8] - 2020-03-22
+
 ### :dizzy: Changed
 
 - Vendor dependencies [bonjour](https://github.com/FantasticFiasco-Forks/bonjour) and [multicast-dns](https://github.com/FantasticFiasco-Forks/multicast-dns)
