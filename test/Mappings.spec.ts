@@ -1,15 +1,11 @@
-import * as chai from 'chai';
-
 import { mapFromService } from './../src/Mappings';
 import { AxisService } from './Mappings.mock';
-
-const should = chai.should();
 
 describe('Mappings', () => {
 
     describe('#fromService', () => {
 
-        it('should map service to device', function () {
+        test('should map service to device', () => {
             // Arrange
             const service = new AxisService(
                 ['192.168.1.102', '169.254.129.36'],
@@ -21,15 +17,15 @@ describe('Mappings', () => {
             const actual = mapFromService(service);
 
             // Assert
-            should.exist(actual);
-            actual!.address.should.equal('192.168.1.102');
-            actual!.linkLocalAddress.should.equal('169.254.129.36');
-            actual!.port.should.equal(80);
-            actual!.macAddress.should.equal('ACCC8E270AD8');
-            actual!.friendlyName.should.equal('Lobby');
+            expect(actual).toBeDefined();
+            expect(actual!.address).toBe('192.168.1.102');
+            expect(actual!.linkLocalAddress).toBe('169.254.129.36');
+            expect(actual!.port).toBe(80);
+            expect(actual!.macAddress).toBe('ACCC8E270AD8');
+            expect(actual!.friendlyName).toBe('Lobby');
         });
 
-        it('should not map service without addressses', function () {
+        test('should not map service without addressses', () => {
             // Arrange
             const service = new AxisService(
                 [],
@@ -41,10 +37,10 @@ describe('Mappings', () => {
             const actual = mapFromService(service);
 
             // Assert
-            should.not.exist(actual);
+            expect(actual).toBeFalsy();
         });
 
-        it('should not map service without address', function () {
+        test('should not map service without address', () => {
             // Arrange
             const service = new AxisService(
                 ['169.254.129.36'],    // Only link local address
@@ -56,10 +52,10 @@ describe('Mappings', () => {
             const actual = mapFromService(service);
 
             // Assert
-            should.not.exist(actual);
+            expect(actual).toBeFalsy();
         });
 
-        it('should not map service without link local address', function () {
+        test('should not map service without link local address', () => {
             // Arrange
             const service = new AxisService(
                 ['192.168.1.102'],     // Only address
@@ -71,10 +67,10 @@ describe('Mappings', () => {
             const actual = mapFromService(service);
 
             // Assert
-            should.not.exist(actual);
+            expect(actual).toBeFalsy();
         });
 
-        it('should map service with MAC address in lower letters', function () {
+        test('should map service with MAC address in lower letters', () => {
             // Arrange
             const service = new AxisService(
                 ['192.168.1.102', '169.254.129.36'],
@@ -86,11 +82,11 @@ describe('Mappings', () => {
             const actual = mapFromService(service);
 
             // Assert
-            should.exist(actual);
-            actual!.macAddress.should.equal('ACCC8E270AD8');
+            expect(actual).toBeDefined();
+            expect(actual!.macAddress).toBe('ACCC8E270AD8');
         });
 
-        it('should not map service without MAC address', function () {
+        test('should not map service without MAC address', () => {
             // Arrange
             const service = new AxisService(
                 ['192.168.1.102', '169.254.129.36'],
@@ -102,7 +98,7 @@ describe('Mappings', () => {
             const actual = mapFromService(service);
 
             // Assert
-            should.not.exist(actual);
+            expect(actual).toBeFalsy();
         });
     });
 });

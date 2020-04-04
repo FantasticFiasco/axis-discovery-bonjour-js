@@ -1,80 +1,75 @@
-import * as chai from 'chai';
-import * as os from 'os';
-import * as sinon from 'sinon';
+import { networkInterfaces } from 'os';
 
 import { getIPv4Addresses } from './../src/NetworkInterface';
 import * as mocks from './NetworkInterface.mock';
 
-chai.should();
+describe('NetworkInterface', () => {
 
-describe('NetworkInterface', function () {
+    describe('#getIPv4Addresses', () => {
 
-    describe('#getIPv4Addresses', function () {
+        beforeAll(() => {
+            jest.mock('os');
 
-        let osStub: sinon.SinonStub;
-
-        afterEach(function () {
-            osStub.restore();
         });
 
-        it('should return addresses from one network interface', function () {
+        test('should return addresses from one network interface', () => {
             // Arrange
-            osStub = sinon.stub(os, 'networkInterfaces')
-                .returns(mocks.NETWORK_INTERFACE_WITH_TWO_ADDRESSES);
+            const networkInterfacesMock: any = networkInterfaces;
+            networkInterfacesMock.mockResolvedValue(mocks.NETWORK_INTERFACE_WITH_TWO_ADDRESSES);
 
             // Act
             const addresses = getIPv4Addresses();
 
             // Assert
-            addresses.should.be.eql(['1.1.1.1', '2.2.2.2']);
+            expect(addresses).toEqual(['1.1.1.1', '2.2.2.2']);
         });
 
-        it('should return addresses from multiple network interfaces', function () {
+        test('should return addresses from multiple network interfaces', () => {
             // Arrange
-            osStub = sinon.stub(os, 'networkInterfaces')
-                .returns(mocks.NETWORK_INTERFACES_WITH_TWO_ADDRESSES);
+            const networkInterfacesMock: any = networkInterfaces;
+            networkInterfacesMock.mockResolvedValue(mocks.NETWORK_INTERFACES_WITH_TWO_ADDRESSES);
 
             // Act
             const addresses = getIPv4Addresses();
 
             // Assert
-            addresses.should.be.eql(['1.1.1.1', '2.2.2.2']);
+            expect(addresses).toEqual(['1.1.1.1', '2.2.2.2']);
         });
 
-        it('should not return internal addresses', function () {
+        test('should not return internal addresses', () => {
             // Arrange
-            osStub = sinon.stub(os, 'networkInterfaces')
-                .returns(mocks.NETWORK_INTERFACES_WITH_INTERNAL_ADDRESSES);
+            const networkInterfacesMock: any = networkInterfaces;
+            networkInterfacesMock.mockResolvedValue(mocks.NETWORK_INTERFACES_WITH_INTERNAL_ADDRESSES);
 
             // Act
             const addresses = getIPv4Addresses();
 
             // Assert
-            addresses.should.be.empty;
+            expect(Object.keys(addresses)).toHaveLength(0);
         });
 
-        it('should not return IPv6 addresses', function () {
+        test('should not return IPv6 addresses', () => {
             // Arrange
-            osStub = sinon.stub(os, 'networkInterfaces')
-                .returns(mocks.NETWORK_INTERFACES_WITH_IPV6_ADDRESSES);
+            const networkInterfacesMock: any = networkInterfaces;
+            networkInterfacesMock.mockResolvedValue(mocks.NETWORK_INTERFACES_WITH_IPV6_ADDRESSES);
 
             // Act
             const addresses = getIPv4Addresses();
 
             // Assert
-            addresses.should.be.empty;
+            expect(Object.keys(addresses)).toHaveLength(0);
         });
 
-        it('should not fail on systems without network interfaces', function () {
+        test('should not fail on systems without network interfaces', () => {
             // Arrange
-            osStub = sinon.stub(os, 'networkInterfaces')
-                .returns(mocks.NO_NETWORK_INTERFACES);
+            const networkInterfacesMock: any = networkInterfaces;
+            networkInterfacesMock.mockResolvedValue(mocks.NO_NETWORK_INTERFACES);
 
             // Act
             const addresses = getIPv4Addresses();
 
             // Assert
-            addresses.should.be.empty;
+            expect(Object.keys(addresses)).toHaveLength(0);
         });
     });
 });
