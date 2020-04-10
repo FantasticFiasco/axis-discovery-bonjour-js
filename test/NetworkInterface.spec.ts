@@ -1,21 +1,19 @@
-import { networkInterfaces } from 'os';
-
+import * as os from 'os';
 import { getIPv4Addresses } from './../src/NetworkInterface';
+import { mocked } from 'ts-jest/utils';
 import * as mocks from './NetworkInterface.mock';
+
+jest.mock('os');
 
 describe('NetworkInterface', () => {
 
+    const osMock = mocked(os);
+
     describe('#getIPv4Addresses', () => {
-
-        beforeAll(() => {
-            jest.mock('os');
-
-        });
 
         test('should return addresses from one network interface', () => {
             // Arrange
-            const networkInterfacesMock: any = networkInterfaces;
-            networkInterfacesMock.mockResolvedValue(mocks.NETWORK_INTERFACE_WITH_TWO_ADDRESSES);
+            osMock.networkInterfaces.mockReturnValue(mocks.NETWORK_INTERFACE_WITH_TWO_ADDRESSES);
 
             // Act
             const addresses = getIPv4Addresses();
@@ -26,8 +24,7 @@ describe('NetworkInterface', () => {
 
         test('should return addresses from multiple network interfaces', () => {
             // Arrange
-            const networkInterfacesMock: any = networkInterfaces;
-            networkInterfacesMock.mockResolvedValue(mocks.NETWORK_INTERFACES_WITH_TWO_ADDRESSES);
+            osMock.networkInterfaces.mockReturnValue(mocks.NETWORK_INTERFACES_WITH_TWO_ADDRESSES);
 
             // Act
             const addresses = getIPv4Addresses();
@@ -38,8 +35,7 @@ describe('NetworkInterface', () => {
 
         test('should not return internal addresses', () => {
             // Arrange
-            const networkInterfacesMock: any = networkInterfaces;
-            networkInterfacesMock.mockResolvedValue(mocks.NETWORK_INTERFACES_WITH_INTERNAL_ADDRESSES);
+            osMock.networkInterfaces.mockReturnValue(mocks.NETWORK_INTERFACES_WITH_INTERNAL_ADDRESSES);
 
             // Act
             const addresses = getIPv4Addresses();
@@ -50,8 +46,7 @@ describe('NetworkInterface', () => {
 
         test('should not return IPv6 addresses', () => {
             // Arrange
-            const networkInterfacesMock: any = networkInterfaces;
-            networkInterfacesMock.mockResolvedValue(mocks.NETWORK_INTERFACES_WITH_IPV6_ADDRESSES);
+            osMock.networkInterfaces.mockReturnValue(mocks.NETWORK_INTERFACES_WITH_IPV6_ADDRESSES);
 
             // Act
             const addresses = getIPv4Addresses();
@@ -62,8 +57,7 @@ describe('NetworkInterface', () => {
 
         test('should not fail on systems without network interfaces', () => {
             // Arrange
-            const networkInterfacesMock: any = networkInterfaces;
-            networkInterfacesMock.mockResolvedValue(mocks.NO_NETWORK_INTERFACES);
+            osMock.networkInterfaces.mockReturnValue(mocks.NO_NETWORK_INTERFACES);
 
             // Act
             const addresses = getIPv4Addresses();
