@@ -4,9 +4,6 @@
     "**/*.js": {
       "when": "$(basename).ts"
     },
-    "**/*.d.ts": {
-      "when": "$(basename).ts"
-    },
     "**/*.js.map": true,
     "**/*.d.ts.map": true,
     "**/npm-debug.log": true
