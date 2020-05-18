@@ -35,6 +35,7 @@
     "test": "jest",
     "lint": "tslint \"./src/**/*.ts\" --exclude \"./**/*.d.ts\"",
     "coverage": "jest --coverage && coveralls < coverage/lcov.info",
+    "prepack": "yarn build",
     "merge-dependencies": "node ./build/merge-dependencies.js"
   },
   "dependencies": {
