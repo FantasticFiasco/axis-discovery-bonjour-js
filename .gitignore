@@ -3,7 +3,10 @@
 
 ## TypeScript
 **/*.d.ts
+!vendor/**/*.d.ts
 **/*.js.map
+**/*.d.ts.map
+**/tsconfig.tsbuildinfo
 
 ## Compiled JavaScript
 src/**/*.js

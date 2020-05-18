@@ -1,5 +1,6 @@
-import * as bonjour from 'bonjour';
 import * as events from 'events';
+
+import * as bonjour from '../vendor/bonjour';
 
 export class AxisService extends events.EventEmitter implements bonjour.Service {
     constructor(
