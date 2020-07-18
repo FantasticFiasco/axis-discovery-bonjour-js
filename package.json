@@ -36,6 +36,8 @@
     "lint": "tslint \"./src/**/*.ts\" --exclude \"./**/*.d.ts\"",
     "coverage": "jest --coverage && coveralls < coverage/lcov.info",
     "prepack": "yarn build",
+    "preversion": "git add ./CHANGELOG.md",
+    "postversion": "git push --follow-tags",
     "merge-dependencies": "node ./build/merge-dependencies.js"
   },
   "dependencies": {
