@@ -28,11 +28,11 @@ import * as bonjour from 'axis-discovery-bonjour';
 
 const discovery = new bonjour.Discovery();
 
-discovery.onHello((device: bonjour.Device) => {
+discovery.on('hello', (device: bonjour.Device) => {
     console.log(`Hello from ${device.address}`);
 });
 
-discovery.onGoodbye((device: bonjour.Device) => {
+discovery.on('goodbye', (device: bonjour.Device) => {
     console.log(`Goodbye from ${device.address}`);
 });
 
@@ -65,7 +65,7 @@ The following NPM packages have been created to provide a smooth experience with
 The `Discovery` class is the main class in the package. With it you can register for changes to cameras on the network and respond accordingly when a camera is found on, or intentionally disconnects from, the network.
 
 ```javascript
-class Discovery {
+class Discovery implements EventEmitter {
     /**
      * Start listen for device advertisements on all network interface
      * addresses.
@@ -83,16 +83,16 @@ class Discovery {
     search(): void;
 
     /**
-     * Register a callback that is invoked when a device is found on the
-     * network.
+     * Adds the listener function to the end of the listeners array for the event named eventName.
+     * No checks are made to see if the listener has already been added. Multiple calls passing the
+     * same combination of eventName and listener will result in the listener being added, and
+     * called, multiple times.
+     * @param eventName The name of the event.
+     * @param listener The callback function.
      */
-    onHello(callback: (device: Device) => void): void;
+    on(eventName: 'hello' | 'goodbye', listener: (device: Device) => void): this;
 
-    /**
-     * Register a callback that is invoked when a device intentionally is
-     * disconnecting from the network.
-     */
-    onGoodbye(callback: (device: Device) => void): void;
+    // The remaining implementation of EventEmitter has been removed for brevity
 }
 ```
 
