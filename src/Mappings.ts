@@ -1,5 +1,4 @@
 import * as bonjour from '../vendor/bonjour';
-
 import { Device } from './Device';
 
 /**
@@ -26,19 +25,13 @@ export function mapFromService(service: bonjour.Service): Device | undefined {
         return undefined;
     }
 
-    return new Device(
-        address,
-        linkLocalAddress,
-        service.port,
-        macAddress.toUpperCase(),
-        service.name);
+    return new Device(address, linkLocalAddress, service.port, macAddress.toUpperCase(), service.name);
 }
 
 const linkLocalPrefix = '169.254';
 
 function getAddresses(service: any): string[] | undefined {
-    if (!service.addresses ||
-        service.addresses instanceof Array === false) {
+    if (!service.addresses || service.addresses instanceof Array === false) {
         return undefined;
     }
 
@@ -60,9 +53,7 @@ function getLinkLocalAddress(addresses: string[]): string | undefined {
 }
 
 function getMacAddress(service: any): string | undefined {
-    if (!service.txt ||
-        !service.txt.macaddress ||
-        typeof service.txt.macaddress !== 'string') {
+    if (!service.txt || !service.txt.macaddress || typeof service.txt.macaddress !== 'string') {
         return undefined;
     }
 

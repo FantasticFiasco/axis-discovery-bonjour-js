@@ -2,16 +2,10 @@ import { mapFromService } from './../src/Mappings';
 import { AxisService } from './Mappings.mock';
 
 describe('Mappings', () => {
-
     describe('#fromService', () => {
-
         test('should map service to device', () => {
             // Arrange
-            const service = new AxisService(
-                ['192.168.1.102', '169.254.129.36'],
-                'Lobby',
-                80,
-                'ACCC8E270AD8');
+            const service = new AxisService(['192.168.1.102', '169.254.129.36'], 'Lobby', 80, 'ACCC8E270AD8');
 
             // Act
             const actual = mapFromService(service);
@@ -27,11 +21,7 @@ describe('Mappings', () => {
 
         test('should not map service without addressses', () => {
             // Arrange
-            const service = new AxisService(
-                [],
-                'Lobby',
-                80,
-                'ACCC8E270AD8');
+            const service = new AxisService([], 'Lobby', 80, 'ACCC8E270AD8');
 
             // Act
             const actual = mapFromService(service);
@@ -43,10 +33,11 @@ describe('Mappings', () => {
         test('should not map service without address', () => {
             // Arrange
             const service = new AxisService(
-                ['169.254.129.36'],    // Only link local address
+                ['169.254.129.36'], // Only link local address
                 'Lobby',
                 80,
-                'ACCC8E270AD8');
+                'ACCC8E270AD8'
+            );
 
             // Act
             const actual = mapFromService(service);
@@ -58,10 +49,11 @@ describe('Mappings', () => {
         test('should not map service without link local address', () => {
             // Arrange
             const service = new AxisService(
-                ['192.168.1.102'],     // Only address
+                ['192.168.1.102'], // Only address
                 'Lobby',
                 80,
-                'ACCC8E270AD8');
+                'ACCC8E270AD8'
+            );
 
             // Act
             const actual = mapFromService(service);
@@ -72,11 +64,7 @@ describe('Mappings', () => {
 
         test('should map service with MAC address in lower letters', () => {
             // Arrange
-            const service = new AxisService(
-                ['192.168.1.102', '169.254.129.36'],
-                'Lobby',
-                80,
-                'accc8e270ad8');
+            const service = new AxisService(['192.168.1.102', '169.254.129.36'], 'Lobby', 80, 'accc8e270ad8');
 
             // Act
             const actual = mapFromService(service);
@@ -88,11 +76,7 @@ describe('Mappings', () => {
 
         test('should not map service without MAC address', () => {
             // Arrange
-            const service = new AxisService(
-                ['192.168.1.102', '169.254.129.36'],
-                'Lobby',
-                80,
-                undefined);
+            const service = new AxisService(['192.168.1.102', '169.254.129.36'], 'Lobby', 80, undefined);
 
             // Act
             const actual = mapFromService(service);

@@ -1,7 +1,6 @@
 import * as expect from '@fantasticfiasco/expect';
-import * as bonjour from '../vendor/bonjour';
 import { EventEmitter } from 'events';
-
+import * as bonjour from '../vendor/bonjour';
 import { Device } from './Device';
 import { log } from './Log';
 import { mapFromService } from './Mappings';
@@ -12,14 +11,13 @@ import { getIPv4Addresses } from './NetworkInterface';
  */
 interface Events {
     hello: Device;
-    goodbye: Device
+    goodbye: Device;
 }
 
 /**
  * Class responsible for discovering Axis cameras on the network.
  */
 export class Discovery implements EventEmitter {
-
     private readonly eventEmitter = new EventEmitter();
     private bonjour?: bonjour.Bonjour;
     private browser?: bonjour.Browser;
