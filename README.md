@@ -1,5 +1,7 @@
 # axis-discovery-bonjour
 
+# THIS REPOSITORY HAS MOVED TO [FantasticFiasco/axis-js](https://github.com/FantasticFiasco/axis-js)
+
 [![Build Status](https://travis-ci.com/FantasticFiasco/axis-discovery-bonjour-js.svg?branch=master)](https://travis-ci.com/FantasticFiasco/axis-discovery-bonjour-js)
 [![Coverage Status](https://coveralls.io/repos/github/FantasticFiasco/axis-discovery-bonjour-js/badge.svg)](https://coveralls.io/github/FantasticFiasco/axis-discovery-bonjour-js)
 [![npm version](https://img.shields.io/npm/v/axis-discovery-bonjour.svg)](https://www.npmjs.com/package/axis-discovery-bonjour)
